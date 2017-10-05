@@ -4,7 +4,6 @@ import dzonerss.springconsolereader.model.FeedData;
 import dzonerss.springconsolereader.model.RssFeeds;
 import dzonerss.springconsolereader.service.CommandResult;
 import dzonerss.springconsolereader.service.RSSService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBException;
@@ -17,7 +16,6 @@ public class AllCommand implements ICommand {
 
     private static final String HTTPTAGS = "<.*?>|&.*?;";
 
-    @Autowired
     private RSSService rssService;
 
     public AllCommand(RSSService rssService) {

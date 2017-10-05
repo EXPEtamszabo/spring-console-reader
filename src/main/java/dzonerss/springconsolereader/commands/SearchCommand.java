@@ -4,8 +4,6 @@ import dzonerss.springconsolereader.model.FeedData;
 import dzonerss.springconsolereader.model.RssFeeds;
 import dzonerss.springconsolereader.service.CommandResult;
 import dzonerss.springconsolereader.service.RSSService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBException;
@@ -24,8 +22,7 @@ public class SearchCommand implements ICommand {
 
     static final String HTTPTAGS = "<.*?>|&.*?;";
 
-    @Autowired
-    public SearchCommand(@Value("${phrase}") String phrase, RSSService rssService) {
+    public SearchCommand(String phrase, RSSService rssService) {
         this.phrase = phrase;
         this.rssService = rssService;
     }
@@ -37,7 +34,7 @@ public class SearchCommand implements ICommand {
 
             List<FeedData> titleList = searchFeeds(phrase, rssFeedData);
 
-            if (!titleList.isEmpty()) {
+            if (titleList.isEmpty()) {
                 return new CommandResult("Don't get any match! Please try with other phrase.");
             }
 

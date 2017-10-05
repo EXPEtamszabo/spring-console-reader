@@ -7,7 +7,6 @@ import dzonerss.springconsolereader.model.FeedData;
 import dzonerss.springconsolereader.model.RssFeeds;
 import dzonerss.springconsolereader.service.CommandResult;
 import dzonerss.springconsolereader.service.RSSService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBException;
@@ -20,7 +19,6 @@ public class CategoriesCommand implements ICommand{
 
     private Multiset<String> myMultiset = HashMultiset.create();
 
-    @Autowired
     private RSSService rssService;
 
     public CategoriesCommand(RSSService rssService) {

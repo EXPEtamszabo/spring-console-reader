@@ -1,6 +1,7 @@
 package dzonerss.springconsolereader.commands;
 
 import dzonerss.springconsolereader.service.RSSService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +13,9 @@ public class CommandFactory {
         return rawCommand.toUpperCase().equals(EXIT);
     }
 
+    @Autowired
+    RSSService rssService;
+
     public ICommand create(String rawCommand) {
         if (rawCommand == null) {
             return null;
@@ -20,8 +24,6 @@ public class CommandFactory {
         String[] commandAndPhrase = rawCommand.split(" ", 2);
 
         String command = commandAndPhrase[0].toUpperCase();
-
-        RSSService rssService = new RSSService();
 
         switch (command) {
             case "ALL":
